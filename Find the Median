@@ -1,0 +1,74 @@
+
+/* C implementation QuickSort */
+#include<stdio.h>
+ 
+// A utility function to swap two elements
+void swap(int* a, int* b)
+{
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int partition (int arr[], int low, int high)
+{
+    int i=low+1,j=high,temp,m=arr[low];
+     while(i<=j)
+     {
+              if(arr[i]<arr[low])
+              {
+                               i++;
+              }
+              if(arr[j]>arr[low])
+              {
+                               j--;                
+              }
+              if(i<=j)
+              {
+                  swap (&arr[i], &arr[j]);
+              }
+      }
+
+     swap (&arr[low], &arr[j]);
+//printf("\n %d",j);
+    if(j==(high+1)/2||j==(high+2)/2)
+    return m;
+    else
+        {
+        arr[j]=m;
+         if (j > (high+1)/2||j >(high+2)/2) 
+            return partition(arr, low, j-1);
+         else 
+            return partition(arr, j+1, high);
+    }
+}
+
+
+/* Function to print an array */
+/*
+void printArray(int arr[],int start, int size)
+{
+    int i;
+   // for (i=start; i <= size; i++)
+    if(size%2==0)
+        printf("%d",(arr[size/2]+arr[(size+1)/2])/2);
+    else
+        printf("%d ", arr[(size+1)/2]);
+    printf("\n");
+}
+*/
+ 
+// Driver program to test above functions
+int main()
+{
+    int n;
+    scanf("%d",&n);
+int arr[n];  
+  for(int i =0;i<n;i++)
+        scanf("%d",&arr[i]);
+  int median=  partition(arr, 0, n-1);
+  printf("%d",median);
+    return 0;
+}
+
+ 
