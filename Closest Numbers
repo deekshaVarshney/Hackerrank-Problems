@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <assert.h>
+#include<limits.h>
+
+
+void insertionSort(int N, int arr[]) {
+    int i,j;
+    int value;
+    for(i=1;i<N;i++)
+    {
+        value=arr[i];
+        j=i-1;
+        while(j>=0&& value<arr[j])
+        {
+            arr[j+1]=arr[j];
+            j=j-1;
+        }
+        arr[j+1]=value;
+    }
+    /*for(j=0;j<N;j++)
+    {
+        printf("%d",arr[j]);
+        printf(" ");
+    }*/
+}
+int main(void) {
+
+    int N,i,j,k=0,mini,minj;
+    scanf("%d", &N);
+    int arr[N],min;
+    for(i = 0; i < N; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    insertionSort(N, arr);
+   /*  for(j=0;j<N;j++)
+    {
+        printf("%d",arr[j]);
+        printf(" ");
+    }
+    printf("\n");*/
+    min=INT_MAX;
+ for(i=0;i<N-1;i++)
+   if((arr[i+1]-arr[i])<min){
+          min=arr[i+1]-arr[i];
+      mini=i;
+     minj=i+1;
+ }
+    
+     for(i=0;i<N-1;i++)
+   if((arr[i+1]-arr[i])==min)
+       printf("%d %d ",arr[i],arr[i+1]);
+ 
+    
+    //insertionSort(N-1,min);
+      // printf("\n");
+     
+          
+ 
+    return 0;
+}
+
