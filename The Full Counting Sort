@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <limits.h>
+int max(int arr[],int n)
+    {
+    int location,maximum,c;
+  maximum = INT_MIN;
+   
+ 
+  for (c = 0; c < n; c++)
+  {
+    if (arr[c] > maximum)
+    {
+       maximum  = arr[c];
+       location = c+1;
+    }
+  }
+   
+    return arr[location-1];
+}
+
+int main() {
+    int i,j,k,n,N;
+
+    scanf("%d",&n);
+    char *w[n],*K[n];
+    int a[n],B[n];
+      for(i=0;i<n;i++){
+w[i]=(char*)malloc(sizeof(char)*n);
+        K[i]=(char*)malloc(sizeof(char)*n);
+      }      
+ 
+       for(i=0;i<n;i++){
+    scanf("%d",&a[i]);
+    scanf("%s",w[i]);
+    
+    }
+       
+ for(i=0;i<n/2;i++){
+     w[i]="-";
+  //printf(" %s",w[i]);
+ } 
+     
+  
+   
+    int l=max(a,n)+1;
+  printf("%d",l);
+    int c[l];  
+     
+    for(i=0;i<l;i++)
+    c[i]=0;
+   
+    
+    for(j=0;j<n;j++)
+    c[a[j]]=c[a[j]]+1;
+  
+   
+  for(i=0;i<l;i++)
+    c[i]=c[i]+c[i-1];
+ 
+      
+        for (j = 0; j <n; j++)
+    {
+         
+        B[c[a[j]]-1] = a[j];
+            printf(" %d %d",a[j],c[a[j]]-1);
+       K[c[a[j]]-1]= w[j];
+            c[a[j]] = c[a[j]] - 1;
+
+    }
+    
+      
+   
+     for(i=0;i<n;i++)
+   printf(" %s",K[i]);
+      
+   //   printf("\n");
+   return 0;
+
+}
