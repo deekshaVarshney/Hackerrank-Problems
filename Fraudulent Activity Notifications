@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <limits.h>
+int max(int arr[],int n)
+    {
+    int location,maximum,c;
+  maximum = INT_MIN;
+   
+ 
+  for (c = 0; c < n; c++)
+  {
+    if (arr[c] > maximum)
+    {
+       maximum  = arr[c];
+       location = c+1;
+    }
+  }
+   
+    return arr[location-1];
+}
+
+int count(int a[],int n){
+    int i,j,k,N,med;
+int B[n];
+if(n%2==0)
+{
+int mid =n/2;
+int c=0;
+ for(int i = 0; i < 201; i ++) {
+            c += f[i];
+   
+ 
+    
+   //   printf("\n");
+   
+return 2;
+}
+int main()
+    {
+     int n,m,noti=0,i,j;
+    scanf("%d %d",&n,&m);
+ // int i,j,k,N;
+int B[n];
+    
+   int arr[n],ar[m];
+    for( i =0;i<n;i++){
+        scanf("%d",&arr[i]);
+}
+    }
+ 
+   int l=max(ar,n)+1;
+   //printf("%d",l);
+    int c[l];  
+     
+    for(i=0;i<l;i++)
+    c[i]=0;
+    
+    
+    for(j=0;j<m;j++)
+    c[ar[j]]=c[ar[j]]+1;
+
+
+int m[n];
+    m[d]=count(c,temp); 
+
+
+
+    printf("%d",count(arr,n)); 
+ 
+}
