@@ -4,15 +4,11 @@
 #include <math.h>
 #include <stdlib.h>
 #include <limits.h>
-int V;
-int binary(int x)
+int V,sum=0;
+
+int min(int x,int y)
     {
-    int arr[100],i=0;
-    int r=x%2;
-    arr[i]=x;
-    i++;
-    x=x/2;
-    
+    return (x<y?x:y);
 }
 int minimum(int dist[],int s[])
     {
@@ -26,22 +22,40 @@ int minimum(int dist[],int s[])
     
     return minIndex;
 }
-void printSolution(int dist[], int n)
+int printSolution(int dist[], int n,int src)
 {
   // printf("Vertex   Distance from Source\n");
-   for (int i = 1; i < V; i++)
-      printf("%d ", dist[i]);
+    
+   for (int i = 0; i < V; i++)
+       
+       if(i<=src)
+      continue;
+     
+//else if(dist[i]>=INT_MAX)
+      // printf("-1 ");
+       else{
+        sum=sum+dist[i];
+     printf("%d ", dist[i]);
+   }
+   return (sum);
 }
 
 
 
 
-void dijkestra(int cost[V][V],int src)
+
+int dijkestra(int cost[V][V],int src)
     {
     int i,j;
-     
+       for(i=0;i<V;i++){
+           src=i;
       int dist[V],s[V];
-    
+   /* for(i=0;i<V;i++){
+             for(j=0;j<V;j++){
+        printf("%d ",cost[i][j]);
+        }      
+           printf("\n");
+       }*/
     for(int i=0;i<V;i++){
         s[i]=0;
     dist[i]=INT_MAX;
@@ -60,18 +74,28 @@ for(int k=0;k<V-1;k++)
           if(cost[u][v]&&s[v]==0&&(dist[u]+cost[u][v])<dist[v]&&dist[u]!=INT_MAX)
             dist[v]=dist[u]+cost[u][v];
     }
- //   printf("\n");
+//  
   
 }
-  printSolution(dist, V);   
- 
+       for (int i = 0; i < V; i++)
+       
+       if(i<=src)
+      continue;
+       else
+        sum=sum+dist[i];
+   
     
+       }
+
+ return sum; 
+  
+  
 }
 int main()
     {
     int u,v,i,j,T,E,w,src;
-   scanf("%d",&T);
-    while(T--){
+   //scanf("%d",&T);
+    //while(T--){
     scanf("%d %d", &V,&E);
         int graph[V][V];
          for(i=0;i<V;i++)
@@ -80,26 +104,49 @@ int main()
         
     for(i=0;i<E;i++){
         scanf("%d %d %d",&u,&v,&w);
-        if(graph[v-1][u-1]==-1)
-                graph[v-1][u-1]=w;
-             if(graph[u-1][v-1]==-1)
-                graph[u-1][v-1]=w;
-             
-      if( graph[v-1][u-1]>w&&graph[v-1][u-1]!=-1)
+             w=pow(2,w);
+       if(graph[u-1][v-1]==0||graph[u-1][v-1]>w)
+        {
+            graph[u-1][v-1]=w;
            graph[v-1][u-1]=w;
-      if( graph[u-1][v-1]>w&&graph[u-1][v-1]!=-1)
-             graph[u-1][v-1]=w;
+         if(graph[u-1][v-1]!=0&&graph[u-1][v-1]>w)
+        {
+            graph[u-1][v-1]=min(graph[u-1][v-1],w);
+           graph[v-1][u-1]=min(graph[u-1][v-1],w);
+        }
+         }
+         }
+       /*for(i=0;i<V;i++){
+             for(j=0;j<V;j++){
+        printf("%d ",graph[i][j]);
+        }      
+           printf("\n");
+       }*/
+      
     //printf("%d %d %d",u,v,w);
     
-    }
+    
    // scanf("%d",&w);
  
     
-        scanf("%d",&src);
-        
-        dijkestra(graph,src-1);
+       //scanf("%d",&src);
+     // for(i=0;i<V;i++)
+     sum= dijkestra(graph,i);
+   // printf("\n");
+     printf("S%dS ", sum);
+     long long binaryNumber = 0;
+    int remainder, k = 1, step = 1;
+
+    while (sum!=0)
+    {
+        remainder = sum%2;
+       // printf("Step %d: %d/2, Remainder = %d, Quotient = %d\n", step++, n, remainder, n/2);
+        sum /= 2;
+        binaryNumber += remainder*k;
+        k *= 10;
     }
+   printf("%lld", binaryNumber);
+
 }
 
-   
 
