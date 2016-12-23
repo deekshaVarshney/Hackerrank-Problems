@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <limits.h>
+int main()
+    {
+    int n,m,o,sum=0,sum1=0,sum2=0,d1=0,d2=0,d3=0,h=0,i;
+    scanf("%d %d %d",&n,&m,&o);
+    int arr[n],arr1[m],arr2[o];
+    for(i=0;i<n;i++)
+    scanf("%d",&arr[i]),sum+=arr[i];
+    for(i=0;i<m;i++)
+    scanf("%d",&arr1[i]),sum1+=arr1[i];
+    for(i=0;i<o;i++)
+    scanf("%d",&arr2[i]),sum2+=arr2[i];
+    
+   while(1) {
+        if(sum==0 || sum1==0 || sum2==0) {
+            h = 0;
+            break;
+        }
+
+        if(sum == sum1 && sum1 == sum2) {
+            h = sum1;
+            break;
+        }
+     if(sum>=sum1&&sum>=sum2)
+        sum-=arr[d1++],h=sum;
+     else if(sum1>=sum&&sum1>=sum2)
+      sum1-=arr1[d2++],h=sum1;
+   else 
+     sum2-=arr2[d3++],h=sum2;
+   }
+    printf("%d",h);
+    return 0;
+
+}
