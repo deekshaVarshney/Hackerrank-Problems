@@ -1,3 +1,6 @@
+/*logic is (AT GFG) that in the stack lower priority operator cannot be put above higher priority operator and Ravi sir's algo is different 
+in that when + is compared with ( ,+ will have lower priortiy and when ( is compared with + then ( will have lower priority */ 
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
