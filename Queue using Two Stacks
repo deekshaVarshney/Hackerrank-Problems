@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+int MAX=100000;
+int q[100000],stack2[100000],stack[100000];
+int front=-1,rear=-1,size=0;
+int top=-1;
+int top2=-1;
+void push(int x)
+    {
+    
+   if(top==MAX-1)
+        printf("overflow \n");
+else
+    {
+    stack[++top]=x;
+   }
+}
+int pop()
+    {
+    int x;
+    if(top==-1){
+        printf("underflow \n");
+        return -1;
+    }
+    else{
+         x=stack[top--];
+        stack2[++top2]=x;
+      
+    }
+    return x;
+}
+int pop2()
+    {
+    int x;
+    if(top2==-1){
+        printf("underflow \n");
+        return -1;
+    }
+    else
+         x=stack2[top2--];
+       
+    return x;
+}
+int enqueue(int item)
+    {
+    rear=(rear+1);
+    if(front==rear)
+        {
+        printf("Queue is full");
+        
+     return -1;   
+    }
+    else
+        {
+        push(item);
+        }
+    return -1;
+}
+int dequeue()
+    {
+    int item;
+    if(front==rear)
+        {
+        printf("Aueue is empty");
+        return -1;
+    }
+    else
+        {
+        
+        while(top!=-1){
+        pop();
+           
+        }
+        
+        front=(front+1);
+        item=pop2();
+                   
+        while(top2!=-1){
+            int x=pop2();
+           
+            push(x);
+        }
+        return item;
+        
+    }
+}
+int main()
+    {
+    int x,value,T,t=0;
+scanf("%d",&T);
+ 
+ do{  
+ scanf("%d",&x);
+  t++; 
+    switch(x){
+       
+        case 1:
+//printf("enter value to be pushed");
+scanf("%d",&value);enqueue(value);
+                break;
+        case 2:dequeue();
+                break;
+        case 3:printf("%d\n",stack[0]);
+case 4:break;       
+ default: printf("Invalid case");
+                break;
+ 
+    } 
+ }while(T!=t);
+   
+
+    
+    return 0;
+}
