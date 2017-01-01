@@ -66,25 +66,35 @@ int dequeue()
         printf("Aueue is empty");
         return -1;
     }
-    else
-        {
-        
-        while(top!=-1){
-        pop();
-           
-        }
-        
-        front=(front+1);
-        item=pop2();
-                   
-        while(top2!=-1){
-            int x=pop2();
-           
-            push(x);
-        }
-        return item;
+    
+    if(top2 == -1)
+{
+    while(top!= -1)
+    {
+        item = pop();
         
     }
+ 
+item = pop2();
+    }
+    else
+      item= pop2();
+    return item;
+  
+}
+void print(){
+	int x;
+    if(top2!=-1){}else{
+		while(top!=-1)
+            {
+            pop();
+      
+        }
+		
+	}
+   
+	 x=stack2[top2];
+	printf("%d\n",x);
 }
 int main()
     {
@@ -102,7 +112,7 @@ scanf("%d",&value);enqueue(value);
                 break;
         case 2:dequeue();
                 break;
-        case 3:printf("%d\n",stack[0]);
+        case 3:print();
 case 4:break;       
  default: printf("Invalid case");
                 break;
