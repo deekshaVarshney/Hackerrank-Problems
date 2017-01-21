@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+struct node
+{
+   
+  int left,right;
+}*roott;
+int N;
+
+
+void swap(int i,int myd,int d) {
+    int t;
+  
+    if(i==-1||i>N)return;
+    if(myd==d) {
+        t=roott[i].left;roott[i].left=roott[i].right;roott[i].right=t;
+        return;
+    }
+    swap(roott[i].left,myd+1,d);swap(roott[i].right,myd+1,d);
+}
+void InOrder(int i) {
+if(i==-1)return;
+     
+    InOrder(roott[i].left);
+   printf("%d ",i);
+    InOrder(roott[i].right);
+    
+
+    
+}
+int main()
+    {
+    int T,d,i,j;
+    scanf("%d",&N);
+   roott=malloc(N*sizeof(N+1));
+    for(i=1;i<=N;i++)
+        scanf("%d %d",&roott[i].left,&roott[i].right);
+    scanf("%d",&T);
+   while(T--){
+    scanf("%d",&d);
+        for(j=d;j<=N;j+=d)swap(1,1,j);
+            InOrder(1); printf("\n");
+    }
+    
+  
+  
+
+  return 0;
+}
