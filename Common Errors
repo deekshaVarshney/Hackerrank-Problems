@@ -1,0 +1,15 @@
+Note:
+1.Never declare a global variable again as a local variable.
+Ex.
+#include <stdio.h>
+int N;
+void swap()
+{}
+int main()
+{
+int N; //This is wrong it again refreshes the value of N.Also check about this on stackoverflow that why this happens
+return 0;
+}
+
+2.Segmentation Faults
+Ex.
