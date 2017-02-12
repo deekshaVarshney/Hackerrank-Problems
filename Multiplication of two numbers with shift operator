@@ -1,0 +1,31 @@
+// CPP program to find multiplication
+// of two number without use of
+// multiplication operator
+#include<bits/stdc++.h>
+using namespace std;
+
+// Function for multiplication
+int multiply(int n, int m)
+{ 
+	int ans = 0, count = 0;
+	while (m)
+	{
+		// check for set bit and left 
+		// shift n, count times
+		if (m % 2 == 1)			 
+			ans += n << count;
+        printf("Count%d ans%d m%d \n",count,ans,m);
+		// increment of place value (count)
+		count++;
+		m /= 2;
+	}
+	return ans;
+}
+
+// Driver program 
+int main()
+{
+	int n = 4 , m = 3;
+	cout << multiply(n, m);
+	return 0;
+}
