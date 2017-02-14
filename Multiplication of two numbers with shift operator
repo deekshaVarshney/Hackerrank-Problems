@@ -29,3 +29,8 @@ int main()
 	cout << multiply(n, m);
 	return 0;
 }
+
+ex 
+count ans m  n<<count
+0	4 3	4
+1      12 1	8
