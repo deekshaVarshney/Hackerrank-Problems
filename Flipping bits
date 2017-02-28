@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+int T;
+    unsigned int N;
+    scanf("%d",&T);
+    while(T--)
+{
+        scanf("%u",&N);
+        unsigned int M=pow(2,32);
+        printf("%u\n",N^M);
+    }
+    
+    return 0;
+}
