@@ -1,0 +1,31 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int setBits(long n) {
+	int count = 0 ;
+    while(n) {
+     count+=n%2?0:1;             //if n%2=1 then it returns 0 ex.for 5 it will return 010 and is counting the no. of 1's in it
+        n=n/2;
+       // printf("count%d\n",count);
+    }
+    return count ;
+}
+
+int main(){
+    long A,n;
+    int X;
+    scanf("%ld",&n);
+    
+    X=setBits(n);
+   printf("X%d\n",X);
+    
+     A=pow(2,X);
+    printf("%ld",A);
+    
+    return 0;
+}
