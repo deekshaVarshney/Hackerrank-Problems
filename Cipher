@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+
+   int N,K,i,j,k;
+    scanf("%d %d",&N,&K);
+char a[N+K];
+    int b[N],c[N+K];
+   // printf("%d %d\n",N,K);
+    for(i=1;i<=N+K;i++)
+        scanf("%c",&a[i]);
+      for(i=2,k=0;a[i]!='\0';i++){
+         // printf("a%c ",a[i]);
+    if(a[i]=='0')
+          c[k++]=0;
+          else
+              c[k++]=1;
+      }
+    //for(i=0;i<N+K-1;i++)
+      //  printf("%d",c[i]);
+  b[0]=c[0];
+    for(i=1;i<K;i++)
+        {
+        b[i]=(c[i]^c[i-1]);
+        
+    }
+    for(i=K;i<N;i++)
+        b[i]=c[i]^c[i-1]^b[i-K];
+    //printf("\n");
+       for(i=0;i<N;i++) 
+           printf("%d",b[i]);
+    return 0;
+    
+}
