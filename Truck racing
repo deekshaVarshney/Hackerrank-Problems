@@ -1,0 +1,58 @@
+Ajay loves playing car racing game. So inspired by this he planned to organize a racing game but with a twist. So he made a rule that all the players have to race with truck as a vehicle only. 
+Today is the racing day, Ajay is watching the race and he noticed that at a point the road is not so wide, so it is impossible for a player to overtake other player at this point. He wants to know that how many trucks were moving at their maximum tempo (movement rate) at that point.
+He gives you the maximum tempo of the N trucks in order they were crossing that narrow point (first to last position). Each truck wants to move at its maximum tempo. But it is not possible because if front truck is moving slower then it has to slow down its tempo. But it will try to maintain fastest tempo possible so that it does not collides with other truck(s). Help Ajay to count the number of trucks were moving at their maximum tempo at that point.
+
+Input
+
+The 1st line of the input contains a single integer T denoting the number of test cases to follow. Each of T line will contains 2 lines. The first line contains N, the number of trucks. The second line contains N space separated integers, denoting the maximum tempo of the trucks in the order they entered at that narrow point.
+
+Output
+
+For each test case, output a single line containing the number of trucks which were moving at their maximum tempo on the narrow point.
+
+Input
+3
+1
+11
+3
+7 2 5
+5
+5 6 2 3 4
+
+Output
+1
+2
+2
+
+
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+       int n;
+       cin>>n;
+       int ans=1,min;
+       int arr[n];
+       for(int i=0;i<n;i++)
+       cin>>arr[i];
+       min=arr[0];
+       for(int i=1;i<n;i++)
+       {
+           if(arr[i]<min)
+           min=arr[i];
+           if(min>=arr[i])
+           ans++;
+       }
+       cout<<ans<<endl;
+   }
+    return 0;
+}
